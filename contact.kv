@@ -1,0 +1,162 @@
+MDScreen:
+    name: 'contact'
+    md_bg_color: [39/255,35/255,26/255,1]
+
+    MDFloatLayout:
+        md_bg_color: [39/255,35/255,26/255,1]
+
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {"center_y": .95}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(52, 0, 231, 255)
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "dashboard"
+
+        Image:
+            source: "images/emaillogo.png"
+            size_hint: .9, .09
+            pos_hint: {"center_x": .5, "center_y": .9}
+
+        MDLabel:
+            text: "Contact Us."
+            pos_hint: {"center_x": .5, "center_y": .8}
+            halign: "center"
+            font_name: "Arial"
+            font_size: "26sp"
+
+        MDFloatLayout:
+            size_hint: .9, .09
+            pos_hint: {"center_x": .5, "center_y": .685}
+            canvas:
+                Color:
+                    rgb: 1, 1, 1, 1
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [6]
+
+            canvas.before:
+                Color:
+                    rgb: 39/255,35/255,26/255,1
+                Line:
+                    width: 2
+                    rounded_rectangle: self.x, self.y, self.width, self.height, 6, 6, 6, 6, 100
+
+
+            TextInput:
+                id: name
+                hint_text: "Name"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height #180
+                #multiline: False
+                cursor_color: 59/255,35/255,26/255,1
+                cursor_width: "2sp"
+                foreground_color: 39/255,35/255,26/255,1
+                background_color: 0, 0, 0, 0
+                padding: 15
+                font_name: "Arial"
+                font_size: "18sp"
+
+
+
+        MDFloatLayout:
+            size_hint: .9, .09
+            pos_hint: {"center_x": .5, "center_y": .565}
+            canvas:
+                Color:
+                    rgb: 1, 1, 1, 1
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [6]
+
+            canvas.before:
+                Color:
+                    rgb: 230/255, 230/255, 230/255, 1
+                Line:
+                    width: 2
+                    rounded_rectangle: self.x, self.y, self.width, self.height, 6, 6, 6, 6, 100
+
+
+            TextInput:
+                id: email
+                hint_text: "Email"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height #180
+                #multiline: False
+                cursor_color: 59/255,35/255,26/255,1
+                cursor_width: "2sp"
+                foreground_color: 39/255,35/255,26/255,1
+                background_color: 0, 0, 0, 0
+                padding: 15
+                font_name: "Arial"
+                font_size: "18sp"
+
+
+
+        MDFloatLayout:
+            size_hint: .9, None
+            height: 180
+            pos_hint: {"center_x": .5, "center_y": .335}
+            canvas:
+                Color:
+                    rgb: 1, 1, 1, 1
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [6]
+
+            canvas.before:
+                Color:
+                    rgb: 230/255, 230/255, 230/255, 1
+                Line:
+                    width: 2
+                    rounded_rectangle: self.x, self.y, self.width, self.height, 6, 6, 6, 6, 100
+
+
+            TextInput:
+                id: message
+                hint_text: "Message"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: 160 #self.minimum_height #180
+                #multiline: False
+                cursor_color: 59/255,35/255,26/255,1
+                cursor_width: "2sp"
+                foreground_color: 39/255,35/255,26/255,1
+                background_color: 0, 0, 0, 0
+                padding: 15
+                font_name: "Arial"
+                font_size: "18sp"
+
+
+
+    Button:
+        text: "SUBMIT"
+        size_hint: .66, .065
+        pos_hint: {"center_x": .5, "center_y": .10}
+        font_size: 20
+        background_color: 0, 1, 0, 0
+        font_name: "Roboto-Regular"
+        on_press: app.send_email(name.text, email.text, message.text)
+
+
+        canvas.before:
+            Color:
+                rgb: rgba(52, 0, 231, 255)
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [5]
+
+
+
+
+
+
+

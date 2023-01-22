@@ -1,0 +1,98 @@
+MDScreen:
+    name: 'analysis'
+    md_bg_color: [39/255,35/255,26/255,1]
+
+    MDFloatLayout:
+
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {"center_y": .95}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(52, 0, 231, 255)
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "dashboard"
+
+        Image:
+            source: "images/energy.png"
+            size_hint: .25, .25
+            pos_hint: {"center_x": .5, "center_y": .90}
+
+
+        MDLabel:
+            id: bulblabel
+            text: 'Bulb (KWh):'
+            halign: 'center'
+            pos_hint: {'center_x': .20, 'center_y': .75}
+
+        MDProgressBar:
+            pos_hint: {"center_x": .65, "center_y": .75}
+            size_hint_x: .5
+            value: 50
+            color: 0, 0, 1, 1
+
+
+        MDLabel:
+            id: phonelabel
+            text: 'Phone (KWh):'
+            halign: 'center'
+            pos_hint: {'center_x': .20, 'center_y': .65}
+
+        MDProgressBar:
+            pos_hint: {"center_x": .65, "center_y": .65}
+            size_hint_x: .5
+            value: 5
+            color: 1, 0, 0, 1
+
+
+        MDLabel:
+            id: laptoplabel
+            text: 'Laptop (KWh):'
+            halign: 'center'
+            pos_hint: {'center_x': .20, 'center_y': .55}
+
+        MDProgressBar:
+            pos_hint: {"center_x": .65, "center_y": .55}
+            size_hint_x: .5
+            value: 20
+            color: 1, 0, 1, 1
+
+
+        MDLabel:
+            id: kettlelabel
+            text: 'Kettle (KWh):'
+            halign: 'center'
+            pos_hint: {'center_x': .20, 'center_y': .45}
+
+        MDProgressBar:
+            pos_hint: {"center_x": .65, "center_y": .45}
+            size_hint_x: .5
+            value: 30
+            color: 1, 1, 1, 1
+
+        MDLabel:
+            id: coillabel
+            text: 'Coil (KWh):'
+            halign: 'center'
+            pos_hint: {'center_x': .20, 'center_y': .35}
+
+        MDProgressBar:
+            pos_hint: {"center_x": .65, "center_y": .35}
+            size_hint_x: .5
+            value: 15
+            color: .2, 1, .5, 1
+
+        MDLabel:
+            id: heaterlabel
+            text: 'Heater (KWh):'
+            halign: 'center'
+            pos_hint: {'center_x': .20, 'center_y': .25}
+
+        MDProgressBar:
+            pos_hint: {"center_x": .65, "center_y": .25}
+            size_hint_x: .5
+            value: 15
+            color: .2, .3, .5, 1
+
+

@@ -1,0 +1,134 @@
+MDScreen:
+    name: 'rate'
+    md_bg_color: [39/255,35/255,26/255,1]
+
+    MDFloatLayout:
+
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {"center_y": .95}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(52, 0, 231, 255)
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "dashboard"
+
+        Image:
+            source: "images/thumbsup.png"
+            size_hint: .9, .09
+            pos_hint: {"center_x": .5, "center_y": .9}
+
+        MDLabel:
+            text: "Rate Us"
+            pos_hint: {"center_x": .6, "center_y": .80}
+            font_style: "H4"
+            bold: True
+
+        MDLabel:
+            text: "Do you like our app?"
+            pos_hint: {"center_x": .6, "center_y": .70}
+            font_style: "H5"
+
+        MDIconButton:
+            id: star1
+            icon: "emoticon-devil"
+            pos_hint: {"center_x": .2, "center_y": .6}
+            user_font_size: "40sp"
+            theme_text_color: "Custom"
+            text_color: 1, 215/255, 0, 1
+            opacity: 1
+            on_release: app.starone()
+
+        MDIconButton:
+            id: star2
+            icon: "emoticon-angry"
+            pos_hint: {"center_x": .35, "center_y": .6}
+            user_font_size: "40sp"
+            theme_text_color: "Custom"
+            text_color: 1, 215/255, 0, 1
+            opacity: 1
+            on_release: app.startwo()
+
+        MDIconButton:
+            id: star3
+            icon: "emoticon-happy"
+            pos_hint: {"center_x": .5, "center_y": .6}
+            user_font_size: "40sp"
+            theme_text_color: "Custom"
+            text_color: 1, 215/255, 0, 1
+            opacity: 1
+            on_release: app.starthree()
+
+        MDIconButton:
+            id: star1
+            icon: "emoticon-excited"
+            pos_hint: {"center_x": .65, "center_y": .6}
+            user_font_size: "40sp"
+            theme_text_color: "Custom"
+            text_color: 1, 215/255, 0, 1
+            opacity: 1
+            on_release: app.starfour()
+
+        MDIconButton:
+            id: star1
+            icon: "emoticon-cool"
+            pos_hint: {"center_x": .8, "center_y": .6}
+            user_font_size: "40sp"
+            theme_text_color: "Custom"
+            text_color: 1, 215/255, 0, 1
+            opacity: 1
+            on_release: app.starfive()
+
+        MDFloatLayout:
+            size_hint: .9, .19
+            pos_hint: {"center_x": .5, "center_y": .425}
+            canvas:
+                Color:
+                    rgb: 1, 1, 1, 1
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [6]
+
+            canvas.before:
+                Color:
+                    rgb: 39/255,35/255,26/255,1
+                Line:
+                    width: 2
+                    rounded_rectangle: self.x, self.y, self.width, self.height, 6, 6, 6, 6, 100
+
+
+            TextInput:
+                id: comment
+                hint_text: "Comment"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .8}
+                height: self.minimum_height #180
+                #multiline: False
+                cursor_color: 59/255,35/255,26/255,1
+                cursor_width: "2sp"
+                foreground_color: 39/255,35/255,26/255,1
+                background_color: 0, 0, 0, 0
+                padding: 15
+                font_name: "Arial"
+                font_size: "18sp"
+
+
+    Button:
+        text: "RATE"
+        size_hint: .66, .065
+        pos_hint: {"center_x": .5, "center_y": .20}
+        font_size: 20
+        background_color: 0, 1, 0, 0
+        font_name: "Roboto-Regular"
+        on_press: app.rate_message(comment.text)
+
+
+        canvas.before:
+            Color:
+                rgb: rgba(52, 0, 231, 255)
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [5]

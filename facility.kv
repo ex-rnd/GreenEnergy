@@ -1,0 +1,117 @@
+MDScreen:
+    name: "facility"
+    md_bg_color: [39/255,35/255,26/255,1]
+
+    MDFloatLayout:
+        md_bg_color: [39/255,35/255,26/255,1]
+
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {"center_y": .95}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(52, 0, 231, 255)
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "dashboard"
+
+        Image:
+            source: "images/bank.png"
+            size_hint: .35, .35
+            pos_hint: {"center_x": .5, "center_y": .85}
+
+
+    MDTextField:
+        id: institution
+        hint_text: "Institution"
+        icon_right: "instrument-triangle"
+        helper_text: "Institution's Name"
+        helper_text_mode: "on_focus"
+        pos_hint: {"center_x": .5, "center_y": .65}
+        size_hint_x: None
+        width: 250
+        font_size: 15
+        line_color_normal: [0, 0, 1, 1]
+        line_color_focus: [0, 0, 1, 1]
+        icon_right_color: [0, 0, 59, 255]
+        multiline: False
+        password: False
+        password_mask: " "
+        mode: "rectangle"
+
+    MDTextField:
+        id: facility
+        hint_text: "Facility"
+        icon_right: "factory"
+        helper_text: "Facility's Name"
+        helper_text_mode: "on_focus"
+        pos_hint: {"center_x": .5, "center_y": .55}
+        size_hint_x: None
+        width: 250
+        font_size: 15
+        line_color_normal: [0, 0, 1, 1]
+        line_color_focus: [0, 0, 1, 1]
+        icon_right_color: [0, 0, 59, 255]
+        multiline: False
+        password: False
+        password_mask: " "
+        mode: "rectangle"
+
+    MDTextField:
+        id: room
+        hint_text: "Room"
+        icon_right: "room-service"
+        helper_text: "Room's Name"
+        helper_text_mode: "on_focus"
+        pos_hint: {"center_x": .5, "center_y": .45}
+        size_hint_x: None
+        width: 250
+        font_size: 15
+        line_color_normal: [0, 0, 1, 1]
+        line_color_focus: [0, 0, 1, 1]
+        icon_right_color: [0, 0, 59, 255]
+        multiline: False
+        password: False
+        password_mask: " "
+        mode: "rectangle"
+
+    MDTextField:
+        id: nationalid
+        hint_text: "Occupant's ID"
+        icon_right: "id-card"
+        helper_text: "National ID"
+        helper_text_mode: "on_focus"
+        pos_hint: {"center_x": .5, "center_y": .35}
+        size_hint_x: None
+        width: 250
+        font_size: 15
+        line_color_normal: [0, 0, 1, 1]
+        line_color_focus: [0, 0, 1, 1]
+        icon_right_color: [0, 0, 59, 255]
+        multiline: False
+        password: False
+        password_mask: " "
+        mode: "rectangle"
+
+
+    Button:
+        text: "PROCEED"
+        size_hint: .66, .065
+        pos_hint: {"center_x": .5, "center_y": .15}
+        font_size: 20
+        background_color: 0, 1, 0, 0
+        font_name: "Roboto-Regular"
+        on_press: app.get_data(institution.text, facility.text, room.text, nationalid.text)
+
+        #on_release:
+
+            #root.manager.transition.direction = "right"
+            #root.manager.current = "appliance"
+
+        canvas.before:
+            Color:
+                rgb: rgba(52, 0, 231, 255)
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [5]

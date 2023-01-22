@@ -1,0 +1,65 @@
+MDScreen:
+    name: "main"
+    MDFloatLayout:
+        md_bg_color: [39/255,35/255,26/255,1]
+        Image:
+            source: "assets/SaveEnergy.png"
+            pos_hint: {"center_x": .45, "center_y": .90}
+
+        Image:
+            source: "assets/GreenEnergyLogo.png"
+            size_hint: .8, .8
+            pos_hint: {"center_x": .5, "center_y": .65}
+            color: rgba(80, 100, 79, 255)
+
+        MDLabel:
+            text: "H e l l o !"
+            font_name: "Roboto-Bold"
+            font_size: "23sp"
+            pos_hint: {"center_y": .38}
+            halign: "center"
+            color: rgba(0, 0, 59, 255)
+
+        MDLabel:
+            text: "The best app to assist you on your journey to energy conservation."
+            font_name: "Roboto-Bold"
+            font_size: "13sp"
+            size_hint_x: .85
+            pos_hint: {"center_x": .5, "center_y": .3}
+            halign: "center"
+            color: rgba(127, 127, 127, 255)
+
+        Button:
+            text: "LOGIN"
+            size_hint: .66, .065
+            pos_hint :{"center_x": .5, "center_y": .18}
+            background_color: 0, 0, 0, 0
+            font_name: "Roboto-Regular"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.manager.current = "login"
+            canvas.before:
+                Color:
+                    rgb: rgba(0, 0, 59, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [5]
+
+        Button:
+            text: "SIGNUP"
+            size_hint: .66, .065
+            pos_hint :{"center_x": .5, "center_y": .09}
+            background_color: 0, 0, 0, 0
+            font_name: "Roboto-Regular"
+            color: rgba(0, 0, 59, 255)
+            on_release:
+                root.manager.transition.direction = "left"
+                root.manager.current = "signup"
+            canvas.before:
+                Color:
+                    rgb: rgba(0, 0, 59, 255)
+                Line:
+                    width: 1.2
+                    rounded_rectangle: self.x, self.y, self.width, self.height, 5, 5, 5, 5, 100
+

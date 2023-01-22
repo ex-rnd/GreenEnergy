@@ -1,0 +1,140 @@
+MDScreen:
+    name: 'bill'
+    md_bg_color: [39/255,35/255,26/255,1]
+
+    MDFloatLayout:
+        md_bg_color: [39/255,35/255,26/255,1]
+
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {"center_y": .95}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(52, 0, 231, 255)
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "dashboard"
+
+        Image:
+            source: "images/powermeter.png"
+            size_hint: .25, .25
+            pos_hint: {"center_x": .5, "center_y": .80}
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDFloatLayout:
+
+
+            MDLabel:
+                id: label
+                text: 'Bill Calculations:'
+                halign: 'center'
+                pos_hint: {'center_x': .5, 'center_y': .95}
+                font_name: "Arial"
+                font_size: "25sp"
+
+
+            MDLabel:
+                id: previousdatelabel
+                text: 'Date Of The Reading:'
+                halign: 'center'
+                pos_hint: {'center_x': .32, 'center_y': .55}
+
+            MDRaisedButton:
+                id: previousdate
+                text: 'Choose Date'
+                pos_hint: {'center_x': .75, 'center_y': .55}
+                on_release: app.show_previous_date_picker()
+
+            MDTextField:
+                id: lastreading
+                hint_text: "Last Reading"
+                icon_right: "speedometer"
+                helper_text: "Meter Reading"
+                helper_text_mode: "on_focus"
+                pos_hint: {"center_x": .5, "center_y": .65}
+                size_hint_x: None
+                width: 250
+                font_size: 15
+                line_color_normal: [0, 0, 59, 255]
+                line_color_focus: [1, 1, 1, 1]
+                icon_right_color: [0, 0, 59, 255]
+                multiline: False
+                password: False
+                password_mask: " "
+                mode: "rectangle"
+
+
+            MDLabel:
+                text: "---"
+                color: rgba(0, 0, 59, 255)
+                pos_hint: {"center_y": .22}
+                font_size: "13sp"
+                font_name: "DejaVuSans"
+                halign: "center"
+
+            MDFloatLayout:
+                md_bg_color: rgba(178, 178, 178, 255)
+                size_hint: .3, .002
+                pos_hint: {"center_x": .3, "center_y": .218}
+
+            MDFloatLayout:
+                md_bg_color: rgba(178, 178, 178, 255)
+                size_hint: .3, .002
+                pos_hint: {"center_x": .7, "center_y": .218}
+
+
+
+            MDLabel:
+                id: currentdatelabel
+                text: 'Date Of The Reading:'
+                halign: 'center'
+                pos_hint: {'center_x': .32, 'center_y': .35}
+
+            MDRaisedButton:
+                id: currentdate
+                text: 'Choose Date'
+                pos_hint: {'center_x': .75, 'center_y': .35}
+                on_release: app.show_current_date_picker()
+
+            MDTextField:
+                id: currentreading
+                hint_text: "Current Reading"
+                icon_right: "speedometer"
+                helper_text: "Meter Reading"
+                helper_text_mode: "on_focus"
+                pos_hint: {"center_x": .5, "center_y": .45}
+                size_hint_x: None
+                width: 250
+                font_size: 15
+                line_color_normal: [0, 0, 59, 255]
+                line_color_focus: [1, 1, 1, 1]
+                icon_right_color: [0, 0, 59, 255]
+                multiline: False
+                password: False
+                password_mask: " "
+                mode: "rectangle"
+
+
+            Button:
+                text: "CALCULATE"
+                size_hint: .66, .065
+                pos_hint: {"center_x": .5, "center_y": .15}
+                font_size: 20
+                background_color: 0, 1, 0, 0
+                font_name: "Roboto-Regular"
+                on_press: app.bill_data(lastreading.text, currentreading.text)
+
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "bill"
+
+                canvas.before:
+                    Color:
+                        rgb: rgba(52, 0, 231, 255)
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [5]
+

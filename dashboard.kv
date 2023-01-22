@@ -1,0 +1,151 @@
+MDScreen:
+    name: "dashboard"
+    md_bg_color: [39/255,35/255,26/255,1]
+
+    MDIconButton:
+        icon: "arrow-left"
+        pos_hint: {"center_y": .95}
+        user_font_size: "30sp"
+        theme_text_color: "Custom"
+        text_color: rgba(52, 0, 231, 255)
+        on_release:
+            root.manager.transition.direction = "right"
+            root.manager.current = "main"
+
+    MDBoxLayout:
+
+        orientation: 'vertical'
+
+        MDBoxLayout:
+            size_hint_y: .10
+            padding: dp(25)
+            MDBoxLayout:
+
+                orientation: "vertical"
+                MDLabel:
+                    halign: "center"
+                    text: "      Dashboard"
+                    font_style: "H5"
+                MDBoxLayout:
+                    adaptive_size: True
+                    spacing: dp(10)
+                    #MDLabel:
+                        #text: "Home"
+                        #text_size: None,None
+                        #pos_hint: {"center_x": .45, "center_y": .99}
+                        #adaptive_width: True
+
+                    #MDIcon:
+                        #icon: 'chevron-down'
+
+            MDIconButton:
+                icon: 'bell' #"images/notification.png"
+                #icon: 'account-settings'
+                pos_hint: {"center_x": .55}
+                pos_hint: {"center_y": .55}
+                on_press:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "usage_main"
+                #user_font_size: "30sp"
+                #theme_text_color: "Custom"
+                #text_color: rgba(26, 24, 58, 255)
+
+        MDGridLayout:
+            size_hint_y: .75
+            cols: 2
+            padding: [dp(15),dp(15),dp(15),dp(35)]
+            spacing: dp(15)
+            ElementCard:
+                image: "images/facility.png"
+                text: " "
+                text: "Facility"
+                #subtext: "March, Wednesday"
+                #items_count: "10 Readings"
+                on_press:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "facility"
+
+            #MDFlatButton:
+                #text: 'kivy button'
+                #pos_hint: {'center_x': .5, 'center_y': .5}
+                #on_press: app.callback()
+
+            ElementCard:
+                image: "images/energyconsumption.png"
+                text: " "
+                text: "Appliance"
+                #subtext: "Broccoli, Apple"
+                #items_count: "4 Items"
+                on_press:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "appliance"
+
+            ElementCard:
+                image: "images/bill.png"
+                text: " "
+                text: "Bill"
+                #subtext: "Lucy Mao going to Office"
+                #items_count: ""
+                on_press:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "bill"
+
+            ElementCard:
+                image: "images/businessintelligence.png" #"images/piggybank.png"
+                text: " "
+                text: "Analysis"
+                #subtext: "Rose favorite your Post"
+                #items_count: ""
+                on_press:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "usage_main"
+
+
+            ElementCard:
+                image:"images/contactemail.png" #"images/businessintelligence.png"
+                text: " "
+                text:"Contact Us"
+                #subtext: "Homework, Design"
+                #items_count: "4 Items"
+                on_press:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "contact"
+
+            ElementCard:
+                image: "images/rate.png"
+                text: " "
+                text: "Rate Us"
+                #subtext: ""
+                #items_count: "4 Items"
+                on_press:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "rate"
+
+<ElementCard@MDCard>:
+    #md_bg_color: 1, 1, 1 , 1
+    md_bg_color: [39/255,35/255,26/255,1]
+    padding: dp(15)
+    spacing: dp(15)
+    radius: dp(25)
+    ripple_behavior: True
+    image: ''
+    text: ""
+    items_count: ""
+    subtext:''
+
+    orientation: 'vertical'
+    Image:
+        source:root.image
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDLabel:
+            halign: "center"
+            text:root.text
+            font_style: "H6"
+        MDLabel:
+            halign: "center"
+            font_style: "Caption"
+            text:root.subtext
+        MDLabel:
+            halign: "center"
+            text:root.items_count

@@ -1,0 +1,153 @@
+MDScreen:
+    quantity: quantity
+    name: "add_appliance"
+    MDFloatLayout:
+        md_bg_color: 39/255,35/255,26/255,1
+        MDIconButton:
+            icon: "chevron-left"
+            user_font_size: "40sp"
+            pos_hint: {"center_y": .95}
+            theme_text_color: "Custom"
+            text_color: 52/255,80/255,66/255,1
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "appliance"
+
+        MDLabel:
+            text: "Add Appliance"
+            pos_hint: {"center_x": .7, "center_y": .88}
+            font_name: "Arial"
+            font_size: "30sp"
+
+        MDFloatLayout:
+            size_hint: .85, .08
+            pos_hint: {"center_x": .5, "center_y": .78}
+            canvas:
+                Color:
+                    rgb: (238/255, 238/255, 238/255, 1)
+
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
+
+            TextInput:
+                id: appliance
+                hint_text: "Name Of Appliance"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                cursor_color: 59/255,35/255,26/255,1
+                cursor_width: "2sp"
+                foreground_color: 39/255,35/255,26/255,1
+                background_color: 0, 0, 0, 0
+                padding: 15
+                font_name: "Arial"
+                font_size: "18sp"
+
+
+        MDFloatLayout:
+            size_hint: .85, .08 #28
+            pos_hint: {"center_x": .5, "center_y": .68} #57
+            canvas:
+                Color:
+                    rgb: (238/255, 238/255, 238/255, 1)
+
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
+
+            TextInput:
+                id: quantity
+                hint_text: "Quantity Of Appliance"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height #180
+                #multiline: False
+                cursor_color: 59/255,35/255,26/255,1
+                cursor_width: "2sp"
+                foreground_color: 39/255,35/255,26/255,1
+                background_color: 0, 0, 0, 0
+                padding: 15
+                font_name: "Arial"
+                font_size: "18sp"
+
+
+        MDFloatLayout:
+            size_hint: .85, .08 #28
+            pos_hint: {"center_x": .5, "center_y": .58} #57
+            canvas:
+                Color:
+                    rgb: (238/255, 238/255, 238/255, 1)
+
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
+
+            TextInput:
+                id: hours
+                hint_text: "Hours Of Power Usage"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height #180
+                #multiline: False
+                cursor_color: 59/255,35/255,26/255,1
+                cursor_width: "2sp"
+                foreground_color: 39/255,35/255,26/255,1
+                background_color: 0, 0, 0, 0
+                padding: 15
+                font_name: "Arial"
+                font_size: "18sp"
+
+
+        MDFloatLayout:
+            size_hint: .85, .08 #28
+            pos_hint: {"center_x": .5, "center_y": .48} #57
+            canvas:
+                Color:
+                    rgb: (238/255, 238/255, 238/255, 1)
+
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
+
+            TextInput:
+                id: wattage
+                hint_text: "Wattage of Appliance"
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height #180
+                #multiline: False
+                cursor_color: 59/255,35/255,26/255,1
+                cursor_width: "2sp"
+                foreground_color: 39/255,35/255,26/255,1
+                background_color: 0, 0, 0, 0
+                padding: 15
+                font_name: "Arial"
+                font_size: "18sp"
+
+
+
+        Button:
+            text: "ADD"
+            icon_right: "account"
+            size_hint: .45, .08
+            pos_hint: {"center_x": .5, "center_y": .36}
+            background_color: 0, 0, 0, 0
+            font_name: "Arial"
+            font_size: "18sp"
+            color: 1, 1, 1, 1
+            on_release:
+                app.add_todo(appliance.text, quantity.text, hours.text, wattage.text)
+            canvas.before:
+                Color:
+                    rgb: (59/255,35/255,26/255,1)
+
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
